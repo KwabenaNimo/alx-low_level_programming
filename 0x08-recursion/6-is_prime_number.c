@@ -1,57 +1,35 @@
 #include "main.h"
 
-/*
- * evalute_num - recursioh loop 
- * @num: num
- * @iterator: number to iterate
- * Return: return 1 or 0
- * */
-
-int evaluate_num(int num, int iterator)
-{
-
-if (iterator == num -1)
-{
-	return (1);
-}
-
-else if (num % iterator == 0)
-{
-	return (0);
-}
-
-if (num % iterator != 0)
-{
-	return (evaluate_num(num, iterator +1));
-}
-
-return (0);
-
-}
-
-/*
- * is_prime_number -evaluate prime or not
- * @num: number
- * Return: return 1 prime -return 0 otherwise
+/**
+ * primeFinder - searches for if a number is prime
+ *
+ * @a: the number to check
+ * @b: the numbers we'll go through
+ *
+ * Return: Whether or not the number is a prime number
  */
 
-int is_prime_number(int num)
+int primeFinder(int a, int b)
 {
+if (a <= 1 || a % b == 0)
+return (0);
+else if (a == b)
+return (1);
+else if (a > b)
+primeFinder(a, b + 1);
 
-	int iterator;
+return (1);
+}
 
-	iterator = 2;
+/**
+ * is_prime_number - tells us if an integer is a prime number or not
+ *
+ * @n: the number to check
+ *
+ * Return: 0 if the number is not prime, and 1 if it is
+ */
 
-	/* only greater than 2*/
-	if (num < 2)
-	{
-		return (0);
-	}
-
-	if (num == 2)
-	{
-		return (1);
-	}
-
-	return (evaluate_num(num, iterator));
+int is_prime_number(int n)
+{
+return (primeFinder(n, 2));
 }
